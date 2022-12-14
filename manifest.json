@@ -2,6 +2,6 @@
     {
         "name": "Mises Node",
         "chain": "mainnet",
-        "dockerfile": ""
+        "dockerfile": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/mises/Dockerfile"
     }
 ]
