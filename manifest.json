@@ -5,5 +5,12 @@
         "dockerfile": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/mises/Dockerfile",
         "image": "mises",
         "container": "mises_node"
+    },
+    {
+        "name": "Humans.ai Node",
+        "chain": "testnet-1",
+        "dockerfile": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/humansdotai/Dockerfile",
+        "image": "humandotai",
+        "container": "humandotai_node"
     }
 ]
