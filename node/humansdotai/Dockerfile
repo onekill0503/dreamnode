@@ -14,8 +14,8 @@ ENV PATH="$PATH:/usr/local/go/bin:/root/go/bin"
 RUN git clone https://github.com/humansdotai/humans \
     && cd ./humans \
     && git checkout v1.0.0 \
-    && make build \
-    && make install
+    && go build -o /root/go/bin/humansd cmd/humansd/main.go
+
 # configuration mises
 ENV HUMAN_CHAIN_ID="[chain]"
 ENV NODENAME="[nodename]"
@@ -43,6 +43,9 @@ RUN sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" ~/.humans/config/app.toml 
     && sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"10\"/" ~/.humans/config/app.toml \
     && sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025uheart\"/" ~/.humans/config/app.toml \
     && sed -i -e "s/prometheus = false/prometheus = true/" ~/.humans/config/config.toml
+
+# EXPOSING rpc Port
+EXPOSE 26657
 
 # run fullnode
 ENTRYPOINT ["humansd" , "start", "--home" , "/root/.humans"]
