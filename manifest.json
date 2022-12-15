@@ -5,6 +5,7 @@
         "dockerfile": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/mises/Dockerfile",
         "image": "mises",
         "container": "mises_node",
+        "type": "cosmos",
         "stateSync" : false
         
     },
@@ -14,6 +15,7 @@
         "dockerfile": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/humansdotai/Dockerfile",
         "image": "humandotai",
         "container": "humandotai_node",
+        "type": "cosmos",
         "stateSync" : false
     }
 ]
