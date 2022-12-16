@@ -46,6 +46,8 @@ RUN sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" ~/.humans/config/app.toml 
 
 # EXPOSING rpc Port
 EXPOSE 26657
+# EXPOSING api port
+EXPOSE 1317
 
 # run fullnode
 ENTRYPOINT ["humansd" , "start", "--home" , "/root/.humans"]

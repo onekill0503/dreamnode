@@ -36,6 +36,8 @@ RUN sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" ~/.misestm/config/app.toml
     
 # EXPOSING rpc Port
 EXPOSE 26657
+# EXPOSING api port
+EXPOSE 1317
 
 # run fullnode
 ENTRYPOINT ["misestmd" , "start", "--home" , "/root/.misestm"]
