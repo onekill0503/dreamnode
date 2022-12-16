@@ -25,7 +25,7 @@ RUN misestmd config chain-id $MISES_CHAIN_ID \
     && misestmd config keyring-backend test \
     && misestmd init $NODENAME --chain-id $MISES_CHAIN_ID \
     && curl https://e1.mises.site:443/genesis | jq .result.genesis > ~/.misestm/config/genesis.json \
-    && sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"40889503320199c676570b417b132755d0414332@rpc.gw.mises.site:26656\"/" ~/.misestm/config/config.toml
+    && sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"[peers]\"/" ~/.misestm/config/config.toml
 # set custom config
 RUN sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" ~/.misestm/config/app.toml \
     && sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" ~/.misestm/config/app.toml \

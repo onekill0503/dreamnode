@@ -25,7 +25,7 @@ RUN humansd config chain-id $HUMAN_CHAIN_ID \
     && humansd config keyring-backend test \
     && humansd init $NODENAME --chain-id $HUMAN_CHAIN_ID \
     && curl https://rpc-testnet.humans.zone/genesis | jq .result.genesis > ~/.humans/config/genesis.json \
-    && sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"1df6735ac39c8f07ae5db31923a0d38ec6d1372b@45.136.40.6:26656,9726b7ba17ee87006055a9b7a45293bfd7b7f0fc@45.136.40.16:26656,6e84cde074d4af8a9df59d125db3bf8d6722a787@45.136.40.18:26656,eda3e2255f3c88f97673d61d6f37b243de34e9d9@45.136.40.13:26656,4de8c8acccecc8e0bed4a218c2ef235ab68b5cf2@45.136.40.12:26656\"/" ~/.humans/config/config.toml
+    && sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"[peers]\"/" ~/.humans/config/config.toml
 # set block time parameter
 RUN sed -i -e "s/^timeout_propose *=.*/timeout_propose = \"100ms\"/" ~/.humans/config/app.toml \
     && sed -i -e "s/^timeout_propose_delta  *=.*/timeout_propose_delta  = \"500ms\"/" ~/.humans/config/app.toml \
