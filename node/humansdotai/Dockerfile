@@ -51,6 +51,9 @@ RUN sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" ~/.humans/config/app.toml 
     && sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025uheart\"/" ~/.humans/config/app.toml \
     && sed -i -e "s/prometheus = false/prometheus = true/" ~/.humans/config/config.toml
 
+# set stateSync if on
+[stateSync]
+
 # EXPOSING rpc Port
 EXPOSE 26657
 # EXPOSING api port
