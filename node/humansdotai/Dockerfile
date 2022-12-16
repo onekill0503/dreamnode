@@ -30,7 +30,8 @@ RUN humansd config chain-id $HUMAN_CHAIN_ID \
 # set api on
 RUN sed -i "117 s/false/true/" /root/.humans/config/app.toml \
     && sed -i "120 s/false/true/" /root/.humans/config/app.toml \
-    && sed -i -e "s/^enabled-unsafe-cors *=.*/enabled-unsafe-cors = true/" /root/.humans/config/app.toml
+    && sed -i -e "s/^enabled-unsafe-cors *=.*/enabled-unsafe-cors = true/" /root/.humans/config/app.toml \
+    && sed -i -e 's/snapshot-interval = 0/snapshot-interval = 10000/' /root/.humans/config/app.toml
 
 # set block time parameter
 RUN sed -i -e "s/^timeout_propose *=.*/timeout_propose = \"100ms\"/" /root/.humans/config/app.toml \
