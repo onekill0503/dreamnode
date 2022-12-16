@@ -28,9 +28,9 @@ RUN humansd config chain-id $HUMAN_CHAIN_ID \
     && sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"[peers]\"/" /root/.humans/config/config.toml
 
 # set api on
-RUN sed -i -e "s/^enable *=.*/enable = true/" /root/.humans/config/app.toml \
+RUN sed -i "117 s/false/enable = true/" /root/.humans/config/app.toml \
+    && sed -i "120 s/false/enable = true/" /root/.humans/config/app.toml \
     && sed -i -e "s/^enabled-unsafe-cors *=.*/enabled-unsafe-cors = true/" /root/.humans/config/app.toml
-
 
 # set block time parameter
 RUN sed -i -e "s/^timeout_propose *=.*/timeout_propose = \"100ms\"/" /root/.humans/config/app.toml \
