@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-WORKDIR ~/
+WORKDIR /root/
 # Update system
 RUN apt-get update\
     && apt-get upgrade -y
@@ -21,32 +21,34 @@ ENV HUMAN_CHAIN_ID="[chain]"
 ENV NODENAME="[nodename]"
 ENV WALLET="[wallet]"
 
-# set api on
-RUN sed -i -e "s/^enable *=.*/enable = true/" ~/.humans/config/config.toml \
-    && sed -i -e "s/^enabled-unsafe-cors *=.*/enabled-unsafe-cors = true/" ~/.humans/config/app.toml
-
 RUN humansd config chain-id $HUMAN_CHAIN_ID \
     && humansd config keyring-backend test \
     && humansd init $NODENAME --chain-id $HUMAN_CHAIN_ID \
-    && curl https://rpc-testnet.humans.zone/genesis | jq .result.genesis > ~/.humans/config/genesis.json \
-    && sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"[peers]\"/" ~/.humans/config/config.toml
+    && curl https://rpc-testnet.humans.zone/genesis | jq .result.genesis > /root/.humans/config/genesis.json \
+    && sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"[peers]\"/" /root/.humans/config/config.toml
+
+# set api on
+RUN sed -i -e "s/^enable *=.*/enable = true/" /root/.humans/config/app.toml \
+    && sed -i -e "s/^enabled-unsafe-cors *=.*/enabled-unsafe-cors = true/" /root/.humans/config/app.toml
+
+
 # set block time parameter
-RUN sed -i -e "s/^timeout_propose *=.*/timeout_propose = \"100ms\"/" ~/.humans/config/app.toml \
-    && sed -i -e "s/^timeout_propose_delta  *=.*/timeout_propose_delta  = \"500ms\"/" ~/.humans/config/app.toml \
-    && sed -i -e "s/^timeout_prevote *=.*/timeout_prevote = \"100ms\"/" ~/.humans/config/app.toml \
-    && sed -i -e "s/^timeout_prevote_delta *=.*/timeout_prevote_delta = \"500ms\"/" ~/.humans/config/app.toml \
-    && sed -i -e "s/^timeout_precommit *=.*/timeout_precommit = \"100ms\"/" ~/.humans/config/app.toml \
-    && sed -i -e "s/^timeout_precommit_delta  *=.*/timeout_precommit_delta  = \"500ms\"/" ~/.humans/config/app.toml \
-    && sed -i -e "s/^timeout_commit  *=.*/timeout_commit  = \"1s\"/" ~/.humans/config/app.toml \
-    && sed -i -e "s/^skip_timeout_commit  *=.*/skip_timeout_commit  = \"false\"/" ~/.humans/config/app.toml 
+RUN sed -i -e "s/^timeout_propose *=.*/timeout_propose = \"100ms\"/" /root/.humans/config/app.toml \
+    && sed -i -e "s/^timeout_propose_delta  *=.*/timeout_propose_delta  = \"500ms\"/" /root/.humans/config/app.toml \
+    && sed -i -e "s/^timeout_prevote *=.*/timeout_prevote = \"100ms\"/" /root/.humans/config/app.toml \
+    && sed -i -e "s/^timeout_prevote_delta *=.*/timeout_prevote_delta = \"500ms\"/" /root/.humans/config/app.toml \
+    && sed -i -e "s/^timeout_precommit *=.*/timeout_precommit = \"100ms\"/" /root/.humans/config/app.toml \
+    && sed -i -e "s/^timeout_precommit_delta  *=.*/timeout_precommit_delta  = \"500ms\"/" /root/.humans/config/app.toml \
+    && sed -i -e "s/^timeout_commit  *=.*/timeout_commit  = \"1s\"/" /root/.humans/config/app.toml \
+    && sed -i -e "s/^skip_timeout_commit  *=.*/skip_timeout_commit  = \"false\"/" /root/.humans/config/app.toml 
 
 # set custom config
-RUN sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" ~/.humans/config/app.toml \
-    && sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" ~/.humans/config/app.toml \
-    && sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"0\"/" ~/.humans/config/app.toml \
-    && sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"10\"/" ~/.humans/config/app.toml \
-    && sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025uheart\"/" ~/.humans/config/app.toml \
-    && sed -i -e "s/prometheus = false/prometheus = true/" ~/.humans/config/config.toml
+RUN sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" /root/.humans/config/app.toml \
+    && sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" /root/.humans/config/app.toml \
+    && sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"0\"/" /root/.humans/config/app.toml \
+    && sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"10\"/" /root/.humans/config/app.toml \
+    && sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025uheart\"/" /root/.humans/config/app.toml \
+    && sed -i -e "s/prometheus = false/prometheus = true/" /root/.humans/config/config.toml
 
 # set stateSync if on
 [stateSync]

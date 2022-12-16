@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-WORKDIR ~/
+WORKDIR /root/
 # Update system
 RUN apt-get update\
     && apt-get upgrade -y
@@ -21,22 +21,23 @@ ENV MISES_CHAIN_ID="[chain]"
 ENV NODENAME="[nodename]"
 ENV WALLET="[wallet]"
 
-# set api on
-RUN sed -i -e "s/^enable *=.*/enable = true/" ~/.humans/config/config.toml \
-    && sed -i -e "s/^enabled-unsafe-cors *=.*/enabled-unsafe-cors = true/" ~/.humans/config/app.toml
-
 RUN misestmd config chain-id $MISES_CHAIN_ID \
     && misestmd config keyring-backend test \
     && misestmd init $NODENAME --chain-id $MISES_CHAIN_ID \
-    && curl https://e1.mises.site:443/genesis | jq .result.genesis > ~/.misestm/config/genesis.json \
-    && sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"[peers]\"/" ~/.misestm/config/config.toml
+    && curl https://e1.mises.site:443/genesis | jq .result.genesis > /root/.misestm/config/genesis.json \
+    && sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"[peers]\"/" /root/.misestm/config/config.toml
+
+# set api on
+RUN sed -i -e "s/^enable *=.*/enable = true/" /root/.misestm/config/config.toml \
+    && sed -i -e "s/^enabled-unsafe-cors *=.*/enabled-unsafe-cors = true/" /root/.misestm/config/app.toml
+
 # set custom config
-RUN sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" ~/.misestm/config/app.toml \
-    && sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" ~/.misestm/config/app.toml \
-    && sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"0\"/" ~/.misestm/config/app.toml \
-    && sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"50\"/" ~/.misestm/config/app.toml \
-    && sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.000025umis\"/" ~/.misestm/config/app.toml \
-    && sed -i -e "s/prometheus = false/prometheus = true/" ~/.misestm/config/config.toml
+RUN sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" /root/.misestm/config/app.toml \
+    && sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" /root/.misestm/config/app.toml \
+    && sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"0\"/" /root/.misestm/config/app.toml \
+    && sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"50\"/" /root/.misestm/config/app.toml \
+    && sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.000025umis\"/" /root/.misestm/config/app.toml \
+    && sed -i -e "s/prometheus = false/prometheus = true/" /root/.misestm/config/config.toml
 
 # set stateSync if on
 [stateSync]
