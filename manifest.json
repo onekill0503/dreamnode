@@ -18,6 +18,6 @@
         "image": "humandotai",
         "container": "humandotai_node",
         "node_type": "cosmos",
-        "stateSync" : false
+        "stateSync" : "https://rpc-testnet.humans.zone:443"
     }
 ]
