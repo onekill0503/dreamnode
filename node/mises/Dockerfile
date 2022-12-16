@@ -21,9 +21,6 @@ ENV MISES_CHAIN_ID="[chain]"
 ENV NODENAME="[nodename]"
 ENV WALLET="[wallet]"
 
-# set monikor based on nodename
-RUN sed -i -e "s/^moniker *=.*/moniker = \"$NODENAME\"/" ~/.humans/config/config.toml
-
 # set api on
 RUN sed -i -e "s/^enable *=.*/enable = true/" ~/.humans/config/config.toml \
     && sed -i -e "s/^enabled-unsafe-cors *=.*/enabled-unsafe-cors = true/" ~/.humans/config/app.toml

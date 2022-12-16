@@ -15,8 +15,8 @@
         "chain": "testnet-1",
         "dockerfile": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/humansdotai/Dockerfile",
         "peers": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/humansdotai/peers.txt",
-        "image": "humandotai",
-        "container": "humandotai_node",
+        "image": "humansdotai",
+        "container": "humansdotai_node",
         "node_type": "cosmos",
         "stateSync" : "https://rpc-testnet.humans.zone:443"
     }
