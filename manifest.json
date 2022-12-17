@@ -18,6 +18,6 @@
         "image": "humansdotai",
         "container": "humansdotai_node",
         "node_type": "cosmos",
-        "stateSync" : "rpc.humans.ppnv.space:30657"
+        "stateSync" : "http://rpc.humans.ppnv.space:30657"
     }
 ]
