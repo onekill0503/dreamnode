@@ -2,22 +2,23 @@
     {
         "name": "Mises Node",
         "chain": "mainnet",
-        "dockerfile": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/mises/Dockerfile",
+        "repo": {
+            "url":"https://github.com/mises-id/mises-tm/",
+            "branch": "1.0.4",
+            "stateSync" : false
+        },
         "peers": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/mises/peers.txt",
-        "image": "mises",
-        "container": "mises_node",
-        "node_type": "cosmos",
-        "stateSync" : false
-        
+        "node_type": "ibc"
     },
     {
         "name": "Humans.ai Node",
         "chain": "testnet-1",
-        "dockerfile": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/humansdotai/Dockerfile",
+        "repo": {
+            "url": "https://github.com/humansdotai/humans",
+            "branch": "v1.0.0",
+            "stateSync" : "http://rpc.humans.ppnv.space:30657"
+        },
         "peers": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/humansdotai/peers.txt",
-        "image": "humansdotai",
-        "container": "humansdotai_node",
-        "node_type": "cosmos",
-        "stateSync" : "http://rpc.humans.ppnv.space:30657"
+        "node_type": "ibc"
     }
 ]
