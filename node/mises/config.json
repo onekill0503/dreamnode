@@ -1,0 +1,8 @@
+{
+    "instrumentation": {
+        "prometheus": true,
+        "prometheus_listen_addr": ":26660",
+        "max_open_connections": 3,
+        "namespace": "tendermint"
+      }
+}

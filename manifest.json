@@ -8,7 +8,11 @@
             "build": false,
             "stateSync" : false,
             "dir": "build/misestmd",
-            "genesis": "https://e1.mises.site:443/genesis"
+            "genesis": "https://e1.mises.site:443/genesis",
+            "config": {
+                "configUrl": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/mises/config.json",
+                "appUrl": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/mises/app.json"
+            }
         },
         "peers": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/mises/peers.txt",
         "node_type": "ibc"
@@ -23,7 +27,11 @@
             "stateSync" : true,
             "rpc":"http://rpc.humans.ppnv.space:30657",
             "dir": "humansd",
-            "genesis": "https://rpc-testnet.humans.zone/genesis"
+            "genesis": "https://rpc-testnet.humans.zone/genesis",
+            "config": {
+                "configUrl": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/humansdotai/config.json",
+                "appUrl": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/humansdotai/app.json"
+            }
         },
         "peers": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/humansdotai/peers.txt",
         "node_type": "ibc"

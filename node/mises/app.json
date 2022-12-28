@@ -1,0 +1,7 @@
+{
+    "minimum-gas-prices": "0.000025umis",
+    "pruning": "custom",
+    "pruning-keep-recent": "100",
+    "pruning-keep-every": "0",
+    "pruning-interval": "50"
+}
