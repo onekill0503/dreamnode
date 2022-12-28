@@ -7,7 +7,8 @@
             "branch": "1.0.4",
             "build": false,
             "stateSync" : false,
-            "dir": "build/misestmd"
+            "dir": "build/misestmd",
+            "genesis": "https://e1.mises.site:443/genesis"
         },
         "peers": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/mises/peers.txt",
         "node_type": "ibc"
@@ -21,7 +22,8 @@
             "build": false,
             "stateSync" : true,
             "rpc":"http://rpc.humans.ppnv.space:30657",
-            "dir": "humansd"
+            "dir": "humansd",
+            "genesis": "https://rpc-testnet.humans.zone/genesis"
         },
         "peers": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/humansdotai/peers.txt",
         "node_type": "ibc"
