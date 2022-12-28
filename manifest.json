@@ -3,9 +3,11 @@
         "name": "Mises Node",
         "chain": "mainnet",
         "repo": {
-            "url":"https://github.com/mises-id/mises-tm/",
+            "url":"https://github.com/mises-id/mises-tm/releases/download/1.0.4/misestmd.linux-amd64.tar.gz",
             "branch": "1.0.4",
-            "stateSync" : false
+            "build": false,
+            "stateSync" : false,
+            "dir": "build/misestmd"
         },
         "peers": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/mises/peers.txt",
         "node_type": "ibc"
@@ -16,7 +18,10 @@
         "repo": {
             "url": "https://github.com/humansdotai/humans",
             "branch": "v1.0.0",
-            "stateSync" : "http://rpc.humans.ppnv.space:30657"
+            "build": false,
+            "stateSync" : true,
+            "rpc":"http://rpc.humans.ppnv.space:30657",
+            "dir": "humansd"
         },
         "peers": "https://raw.githubusercontent.com/onekill0503/dreamnode/main/node/humansdotai/peers.txt",
         "node_type": "ibc"
