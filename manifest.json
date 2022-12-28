@@ -23,7 +23,8 @@
         "repo": {
             "url": "https://github.com/humansdotai/humans",
             "branch": "v1.0.0",
-            "build": false,
+            "build": true,
+            "buildCmd": ["go build -o humansd $HOME/humans/cmd/humansd/main.go" , "cp humansd /usr/local/bin/humansd"],
             "stateSync" : true,
             "rpc":"http://rpc.humans.ppnv.space:30657",
             "dir": "humansd",
