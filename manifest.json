@@ -4,9 +4,9 @@
         "chain": "mainnet",
         "repo": {
             "url":"https://github.com/mises-id/mises-tm/releases/download/1.0.4/misestmd.linux-amd64.tar.gz",
-            "branch": "1.0.4",
             "build": false,
-            "stateSync" : false,
+            "stateSync" : true,
+            "rpc": "https://contabo1.alwaysbedream.dev:10001",
             "dir": "build/misestmd",
             "genesis": "https://e1.mises.site:443/genesis",
             "config": {
@@ -21,10 +21,8 @@
         "name": "Humans.ai Node",
         "chain": "testnet-1",
         "repo": {
-            "url": "https://github.com/humansdotai/humans",
-            "branch": "v1.0.0",
-            "build": true,
-            "buildCmd": ["go build -o humansd $HOME/humans/cmd/humansd/main.go" , "cp humansd /usr/local/bin/humansd"],
+            "url": "https://github.com/humansdotai/humans/releases/download/latest/humans_latest_linux_amd64.tar.gz",
+            "build": false,
             "stateSync" : true,
             "rpc":"http://rpc.humans.ppnv.space:30657",
             "dir": "humansd",
